@@ -13,6 +13,26 @@
       color: #333;
     }
 
+    /* Navigation */
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #ff9800; }
+
     /* Hero Section */
     .hero {
       text-align: center;
@@ -47,23 +67,6 @@
       transform: scale(1.15);
       filter: invert(64%) sepia(83%) saturate(748%) hue-rotate(1deg) brightness(95%) contrast(90%);
     }
-
-    /* Navigation */
-    nav {
-      background: #333;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 1rem;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { color: #ff9800; }
 
     /* Sections */
     section {
@@ -104,6 +107,15 @@
   </style>
 </head>
 <body>
+  <!-- Navigation at the very top -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <!-- Hero Section -->
   <div class="hero">
     <img src="profile.jpg" alt="Bonke Profile Picture">
@@ -122,15 +134,6 @@
       </a>
     </div>
   </div>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
   <!-- Sections -->
   <section id="home">
