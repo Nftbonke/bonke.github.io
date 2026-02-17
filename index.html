@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bonke Portfolio</title>
   <style>
-    /* Reset and base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
       background: #f9f9f9;
       color: #333;
@@ -25,13 +20,32 @@
       padding: 2rem;
       text-align: center;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid #ff9800;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
+    header h1 { font-size: 2rem; }
+    header p { color: #ccc; margin-top: 0.5rem; }
+
+    /* Social/contact icons */
+    .social-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links img {
+      width: 28px;
+      height: 28px;
+      filter: invert(100%); /* makes icons white */
+      transition: transform 0.3s ease;
+    }
+    .social-links img:hover {
+      transform: scale(1.2);
+      filter: invert(64%) sepia(83%) saturate(748%) hue-rotate(1deg) brightness(95%) contrast(90%);
     }
 
     /* Navigation */
@@ -39,7 +53,8 @@
       background: #333;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
       padding: 1rem;
     }
     nav a {
@@ -48,9 +63,7 @@
       font-weight: bold;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #ff9800;
-    }
+    nav a:hover { color: #ff9800; }
 
     /* Sections */
     section {
@@ -63,13 +76,9 @@
     }
     section h2 {
       margin-bottom: 1rem;
-      color: #1a1a1a;
       border-bottom: 2px solid #ff9800;
       display: inline-block;
       padding-bottom: 0.3rem;
-    }
-    section p {
-      margin-bottom: 1rem;
     }
 
     /* Footer */
@@ -80,12 +89,37 @@
       color: #fff;
       margin-top: 3rem;
     }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.5rem; }
+      section { margin: 1rem; padding: 1rem; }
+    }
+    @media (max-width: 480px) {
+      nav { flex-direction: column; align-items: center; }
+      header img { width: 90px; height: 90px; }
+    }
   </style>
 </head>
 <body>
   <header>
+    <!-- Replace profile.jpg with your actual picture -->
+    <img src="profile.jpg" alt="Bonke Profile Picture">
     <h1>Bonke Portfolio</h1>
-    <p>Researcher • Developer • Innovator</p>
+    <p>Computer Engineer • Front-End Developer • Web3 Researcher</p>
+
+    <!-- Social/contact icons -->
+    <div class="social-links">
+      <a href="mailto:oladoyin.reinhard@gmail.com" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email">
+      </a>
+      <a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+      </a>
+      <a href="https://x.com/yourhandle" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt="X (Twitter)">
+      </a>
+    </div>
   </header>
 
   <nav>
@@ -102,19 +136,20 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>I am passionate about technology, research, and building impactful projects. My journey combines creativity with problem-solving to deliver meaningful solutions.</p>
+    <p>I am a Computer Engineering graduate and Front-End Web Developer with hands-on experience building responsive websites, managing WordPress platforms, and collaborating on API-driven applications. I am passionate about technology, research, and building impactful projects.</p>
   </section>
 
   <section id="research">
     <h2>Research</h2>
-    <p>My research focuses on exploring innovative approaches in web development, data analysis, and emerging technologies. I aim to contribute to knowledge and practical applications.</p>
+    <p>My research focuses on blockchain ecosystems, DeFi trends, and emerging technologies. I test dApps, contribute to Web3 projects, and create educational content to simplify complex concepts.</p>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Feel free to reach out for collaborations or inquiries:</p>
-    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    <p>Email: <a href="mailto:oladoyin.reinhard@gmail.com">oladoyin.reinhard@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank">linkedin.com/in/oladoyin-oluwadele-2bb6731a3</a></p>
+    <p>X (Twitter): <a href="https://x.com/yourhandle" target="_blank">@yourhandle</a></p>
+    <p><a href="Oluwadele_Reinhard_CV.docx" download>📄 Download My CV</a></p>
   </section>
 
   <footer>
@@ -122,4 +157,5 @@
   </footer>
 </body>
 </html>
+
 
