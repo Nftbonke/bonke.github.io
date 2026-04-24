@@ -1,183 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bonke Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio website for Oluwadele Oladoyin Reinhard, Computer Engineer, Front-End Developer, and Web3 Researcher." />
+  <title>Oluwadele Oladoyin Reinhard | Portfolio</title>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #4facfe, #00f2fe); /* modern blue gradient */
-      color: #333;
-      scroll-behavior: smooth; /* enables smooth scrolling */
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2f;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --text: #eef5ff;
+      --muted: #b8c7dc;
+      --accent: #38bdf8;
+      --accent-2: #f59e0b;
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --radius: 22px;
+      --max-width: 1120px;
     }
 
-    /* Navigation */
-    nav {
-      background: #333;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 1rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 32rem),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.18), transparent 28rem),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--white);
+      color: var(--bg);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      z-index: 9999;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    header {
       position: sticky;
       top: 0;
       z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 17, 31, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { color: #ff9800; }
 
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: #fff;
-    }
-    .hero img {
-      width: 250px;   /* Larger profile picture */
-      height: 250px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 4px solid #fff; /* clean white border */
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3); /* subtle shadow */
-    }
-    .hero h1 { font-size: 2.5rem; }
-    .hero p { font-size: 1.2rem; margin-top: 0.5rem; }
-
-    /* Social Links */
-    .social-links {
-      margin-top: 1rem;
+    .nav {
+      min-height: 76px;
       display: flex;
-      justify-content: center;
-      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
     }
-    .social-links a {
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 650;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+      color: #04111f !important;
+      border-radius: 999px;
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.24);
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 3rem;
+      padding: 5rem 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.75rem;
+      margin-bottom: 1.3rem;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.11);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      max-width: 770px;
+      font-size: clamp(2.45rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%; /* circular icons */
-      background: rgba(255,255,255,0.15); /* subtle transparent background */
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    .social-links a:hover {
-      background: #ff9800;
-      transform: scale(1.1);
-    }
-    .social-links img {
-      width: 22px;
-      height: 22px;
-      filter: invert(100%); /* white icons */
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
-    /* Sections */
-    section {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    section h2 {
-      margin-bottom: 1rem;
-      border-bottom: 3px solid #ff9800;
-      display: inline-block;
-      padding-bottom: 0.3rem;
-      color: #333;
+    .button:hover {
+      transform: translateY(-2px);
     }
 
-    /* Footer */
+    .button-primary {
+      background: var(--accent);
+      color: #04111f;
+      box-shadow: 0 18px 38px rgba(56, 189, 248, 0.25);
+    }
+
+    .button-secondary {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .social-row a {
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .social-row a:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 1.1rem;
+      border: 1px solid var(--card-border);
+      border-radius: 36px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+      box-shadow: var(--shadow);
+    }
+
+    .profile-image-wrap {
+      overflow: hidden;
+      border-radius: 30px;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(245, 158, 11, 0.16));
+    }
+
+    .profile-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-meta {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(7, 17, 31, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--white);
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    main section {
+      padding: 5rem 0;
+    }
+
+    .section-heading {
+      max-width: 740px;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.25fr 0.75fr;
+    }
+
+    .card {
+      padding: 1.4rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      padding: 0.48rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      color: #dff6ff;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.25rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    .project-tags li {
+      font-size: 0.78rem;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.09);
+      padding: 0.34rem 0.58rem;
+      border-radius: 999px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+    }
+
+    .timeline-item time {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .contact-list a {
+      display: block;
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-list a:hover {
+      color: var(--white);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
     footer {
+      padding: 2rem 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       text-align: center;
-      padding: 1.5rem;
-      background: #333;
-      color: #fff;
-      margin-top: 3rem;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .hero img { width: 200px; height: 200px; }
-      section { margin: 1rem; padding: 1rem; }
+    @media (max-width: 860px) {
+      .nav {
+        min-height: auto;
+        padding: 1rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        gap: 1rem;
+      }
+
+      .hero,
+      .about-grid,
+      .project-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 3.2rem 0;
+      }
+
+      .profile-card {
+        max-width: 480px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
     }
-    @media (max-width: 480px) {
-      .hero img { width: 160px; height: 160px; }
-      .social-links a { width: 34px; height: 34px; }
-      .social-links img { width: 18px; height: 18px; }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        font-size: 0.9rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero-actions,
+      .button {
+        width: 100%;
+      }
+
+      .profile-meta {
+        grid-template-columns: 1fr;
+      }
+
+      main section {
+        padding: 3.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation at the very top -->
-  <nav>
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Hero Section -->
-  <div class="hero" id="hero">
-    <img src="profile.jpg" alt="Bonke Profile Picture">
-    <h1>Oluwadele Oladoyin Reinhard</h1>
-    <p>Computer Engineer • Front-End Developer • Web3 Researcher</p>
+  <header>
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#home">Bonke<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="social-links">
-      <a href="mailto:oladoyin.reinhard@gmail.com" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email">
-      </a>
-      <a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-      </a>
-      <a href="https://x.com/0xbonke" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt="X (Twitter)">
-      </a>
-    </div>
-  </div>
+  <main id="main">
+    <section class="hero container" id="home">
+      <div>
+        <p class="eyebrow">Computer Engineer • Front-End Developer • Web3 Researcher</p>
+        <h1>Building clean digital experiences with <span>purpose</span>.</h1>
+        <p class="hero-text">
+          I am Oluwadele Oladoyin Reinhard, a developer and researcher focused on responsive web interfaces, WordPress platforms, API-driven products, and practical Web3 education.
+        </p>
 
-  <!-- Sections -->
-  <section id="about">
-    <h2>About</h2>
-    <p>I am a Computer Engineering graduate and Front-End Web Developer with hands-on experience building responsive websites, managing WordPress platforms, and collaborating on API-driven applications. I am passionate about technology, research, and building impactful projects.</p>
-  </section>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View My Work</a>
+          <a class="button button-secondary" href="Oluwadele_Reinhard_CV.docx" download>Download CV</a>
+        </div>
 
-  <section id="research">
-    <h2>Research</h2>
-    <p>My research focuses on blockchain ecosystems, DeFi trends, and emerging technologies. I test dApps, contribute to Web3 projects, and create educational content to simplify complex concepts.</p>
-  </section>
+        <div class="social-row" aria-label="Social links">
+          <a href="mailto:oladoyin.reinhard@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://x.com/0xbonke" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        </div>
+      </div>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Skill Acquisition Company Website:</strong> Responsive site using HTML, CSS, JavaScript.</li>
-      <li><strong>Fashion Designer Portfolio:</strong> WordPress site with WhatsApp integration.</li>
-      <li><strong>Data Analysis Practice:</strong> Excel & SQL dashboards.</li>
-      <li><strong>Web3 Ambassador Projects:</strong> Research, testing, and education.</li>
-    </ul>
-  </section>
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="profile-image-wrap">
+          <img src="profile.jpg" alt="Portrait of Oluwadele Oladoyin Reinhard" />
+        </div>
+        <div class="profile-meta">
+          <div class="metric">
+            <strong>4+</strong>
+            <span>Project areas</span>
+          </div>
+          <div class="metric">
+            <strong>Web3</strong>
+            <span>Research focus</span>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:oladoyin.reinhard@gmail.com">oladoyin.reinhard@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank">linkedin.com/in/oladoyin-oluwadele-2bb6731a3</a></p>
-    <p>X (Twitter): <a href="https://x.com/0xbonke" target="_blank">@0xbonke</a></p>
-    <p><a href="Oluwadele_Reinhard_CV.docx" download style="color:#ff5722; font-weight:bold;">📄 Download My CV</a></p>
-  </section>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About me</h2>
+          <p>A concise summary of who I am, what I build, and the value I bring.</p>
+        </div>
+
+        <div class="grid about-grid">
+          <article class="card">
+            <p>
+              I am a Computer Engineering graduate and Front-End Web Developer with practical experience building responsive websites, managing WordPress platforms, and collaborating on API-driven applications. I enjoy turning ideas into usable, accessible, and visually clear digital products.
+            </p>
+            <p style="margin-top: 1rem;">
+              My work combines technical execution, research discipline, and clear communication. I am especially interested in projects where web development, data, and blockchain ecosystems meet real user needs.
+            </p>
+          </article>
+
+          <aside class="card">
+            <h3>Core skills</h3>
+            <div class="skills">
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">WordPress</span>
+              <span class="skill">Responsive Design</span>
+              <span class="skill">API Integration</span>
+              <span class="skill">SQL</span>
+              <span class="skill">Excel</span>
+              <span class="skill">Web3 Research</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Selected projects</h2>
+          <p>Examples of practical work across websites, WordPress, data practice, and Web3 communities.</p>
+        </div>
+
+        <div class="grid project-grid">
+          <article class="card project-card">
+            <div>
+              <h3>Skill Acquisition Company Website</h3>
+              <p>Designed and developed a responsive business website with clear service presentation, mobile-friendly sections, and accessible page structure.</p>
+            </div>
+            <ul class="project-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Responsive UI</li>
+            </ul>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <h3>Fashion Designer Portfolio</h3>
+              <p>Built a WordPress portfolio site to showcase creative work, improve brand presentation, and simplify client communication with WhatsApp integration.</p>
+            </div>
+            <ul class="project-tags">
+              <li>WordPress</li>
+              <li>Portfolio</li>
+              <li>WhatsApp</li>
+              <li>Client Site</li>
+            </ul>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <h3>Data Analysis Practice</h3>
+              <p>Created practice dashboards and queries to strengthen analysis workflows using Excel and SQL for structured reporting and insight generation.</p>
+            </div>
+            <ul class="project-tags">
+              <li>Excel</li>
+              <li>SQL</li>
+              <li>Dashboards</li>
+              <li>Reporting</li>
+            </ul>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <h3>Web3 Ambassador Projects</h3>
+              <p>Researched blockchain ecosystems, tested decentralized applications, and created educational content to make technical Web3 concepts easier to understand.</p>
+            </div>
+            <ul class="project-tags">
+              <li>Web3</li>
+              <li>DeFi</li>
+              <li>dApps</li>
+              <li>Research</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Research focus</h2>
+          <p>My research work centers on emerging technologies, ecosystem analysis, and practical education.</p>
+        </div>
+
+        <div class="card">
+          <p>
+            I study blockchain ecosystems, DeFi trends, decentralized applications, and early-stage Web3 products. My goal is to understand how these technologies work, evaluate their practical use cases, and communicate complex ideas in a clear and useful way.
+          </p>
+          <div class="skills">
+            <span class="skill">Blockchain ecosystems</span>
+            <span class="skill">DeFi trends</span>
+            <span class="skill">dApp testing</span>
+            <span class="skill">Technical education</span>
+            <span class="skill">Community research</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Experience highlights</h2>
+          <p>A simple overview of the areas where I have applied my technical and research skills.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <time>Development</time>
+            <div>
+              <h3>Front-End and Website Projects</h3>
+              <p>Built responsive web pages, improved website structure, and worked with WordPress to deliver practical online experiences for different use cases.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <time>Research</time>
+            <div>
+              <h3>Web3 and Emerging Technology</h3>
+              <p>Explored blockchain projects, tested decentralized applications, and contributed educational research for audiences learning about Web3.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <time>Data</time>
+            <div>
+              <h3>Analysis and Reporting Practice</h3>
+              <p>Used Excel and SQL to practice data organization, querying, dashboards, and basic reporting workflows.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Let’s connect</h2>
+          <p>Reach out for web development work, research collaboration, or Web3 community opportunities.</p>
+        </div>
+
+        <div class="contact-panel">
+          <article class="card">
+            <h3>Contact details</h3>
+            <ul class="contact-list" style="margin-top: 1rem;">
+              <li><a href="mailto:oladoyin.reinhard@gmail.com">oladoyin.reinhard@gmail.com</a></li>
+              <li><a href="https://linkedin.com/in/oladoyin-oluwadele-2bb6731a3" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></li>
+              <li><a href="https://x.com/0xbonke" target="_blank" rel="noopener noreferrer">@0xbonke on X</a></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Availability</h3>
+            <p style="margin-top: 1rem;">
+              I am open to front-end development opportunities, WordPress projects, Web3 research tasks, ambassador roles, and collaborations where technology can create clear practical value.
+            </p>
+            <a class="button button-primary" href="mailto:oladoyin.reinhard@gmail.com" style="margin-top: 1.2rem;">Send an Email</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2026 Bonke. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2026 Oluwadele Oladoyin Reinhard. Built with HTML and CSS.</p>
+    </div>
   </footer>
 </body>
 </html>
+
+
 
